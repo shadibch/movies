@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Film</h1>
+<div mat-dialog-content>
+  <p>Title</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.movie.title">
+  </mat-form-field>
+  <p>Title</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.movie.description">
+  </mat-form-field>
+  
+  <p>Category</p>
+	{{data.category}}
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="data" (click)="{{data.save=true}}"cdkFocusInitial>Save</button>
+</div>

@@ -1,0 +1,30 @@
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+<h1 mat-dialog-title>Movie</h1>
+<div mat-dialog-content>
+<div cllass="dlg">
+  <label style="width:100px;  display:inline-block;color:#136CB2;" for="title">Title *</label>
+  <mat-form-field style="width:250px;">
+    <input style="width:250px;" formControlName="title"  id="title" matInput [(ngModel)]="data.movie.title">
+	 <div class="error" style="color:red;height:10px;display:inline-block;" *ngIf="loginForm.controls['title'].hasError('required') && loginForm.controls['title'].touched">Title is required</div>
+      
+  </mat-form-field>
+  </div>
+  <div>
+  <div cllass="dlg">
+  <label style="width:100px;  display:inline-block;color:#136CB2;" for="description">Description</label>
+  <mat-form-field style="width:250px;">
+  <textarea formControlName="description" style="width:250px;" id="description" matInput [(ngModel)]="data.movie.description" style="border:solid 1px;vertical-align: top;" rows="4"></textarea>
+  <div class="error" style="color:red;height:10px;display:inline-block;" *ngIf="loginForm.controls['description'].hasError('required') && loginForm.controls['description'].touched">Description is required</div>  
+  </mat-form-field>
+  </div>
+  <div cllass="dlg">
+  <label style="width:100px;  display:inline-block;color:#136CB2;">Category</label>
+	{{data.movie.category}}
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <input type="submit" mat-button  cdkFocusInitial value="Save"/>
+</div>
+</div>
+</form>

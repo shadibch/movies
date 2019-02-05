@@ -1,0 +1,8 @@
+.mat-dialog-container app-movie-dialog .dlg {
+	width:100%;
+}
+.mat-dialog-container app-movie-dialog .dlg label {
+	width:60px;
+	font: italic bold;
+	color:#136CB2; 
+}

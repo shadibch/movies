@@ -1,0 +1,26 @@
+<div class="content">
+<label>Category</label>
+
+<select [(ngModel)]="category" (change)="updatePage(0)" >
+<option *ngFor="let cat of categories" >{{cat}}</option>
+</select>
+<button (click)="addMovie()" title="Add">+</button>
+<a routerLink="../signin" style="float:right;">Logout</a>
+</div>
+<div  *ngIf="currentPage" class="container" >
+<div  class="item" *ngFor="let item of currentPage._embedded.movies">
+<h2>{{item.title}}   <a  (click)="editMovie(item)"><img title="Edit"  src="images/edit.png"  /></a>
+<a   *ngIf="apiService.hasRole('ROLE_ADMIN')" (click)="deleteMovie(item)"><img title="Delete"  src="images/delete.png"  /></a>
+</h2>
+<p>{{item.description}}</p>
+</div>
+
+<div class="toolbar" *ngIf="currentPage && currentPage.page.totalPages  >1" style="width:100%">
+<a  title="First Page" (click)="updatePage(0)"> |&lt; </a>
+<a *ngIf="currentPage.page.number > 0" title="Previos" (click)="updatePage(currentPage.page.number  -1)" > &lt; </a>
+<a *ngIf="currentPage.page.number +1< currentPage.page.totalPages" title="Next" (click)="updatePage(currentPage.page.number  + 1)" > &gt; </a>
+<a  (click)="updatePage(currentPage.page.totalPages -1)" title="Last"> &gt;| </a>
+</div>
+<h6>Total Movies {{currentPage.page.totalElements}}  for {{category}}</h6>
+<h6>Page {{currentPage.page.number + 1}} Of {{currentPage.page.totalPages }}  for {{category}}</h6>
+</div>
